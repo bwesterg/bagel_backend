@@ -18,4 +18,8 @@ Bagel.create([
         name: "Gluten-Free",
         rating: 1,
     },
+    {
+        name: "Strawberry",
+        rating: 2,
+    },
 ])
