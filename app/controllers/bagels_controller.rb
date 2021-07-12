@@ -12,7 +12,9 @@ class BagelsController < ApplicationController
     end
 
     def destroy
+        @bagel = Bagel.find(params[:id])
         @bagel.destroy
+        
         render status: :no_content
     end
 
