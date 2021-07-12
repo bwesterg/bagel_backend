@@ -11,6 +11,11 @@ class BagelsController < ApplicationController
         render json: @bagel
     end
 
+    def destroy
+        @bagel.destroy
+        render status: :no_content
+    end
+
     private
 
     def bagel_params
