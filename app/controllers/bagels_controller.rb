@@ -11,6 +11,13 @@ class BagelsController < ApplicationController
         render json: @bagel
     end
 
+    def update
+        @bagel = Bagel.find_by(bagel_params)
+        @bagel.save
+        render json: @bagel
+
+    end
+
     def destroy
         @bagel = Bagel.find(params[:id])
         @bagel.destroy
