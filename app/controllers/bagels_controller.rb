@@ -1,5 +1,6 @@
 class BagelsController < ApplicationController
 
+    before_action :find_bagel, only: [:update, :destroy]
 
     def index
         @bagels = Bagel.all 
@@ -13,14 +14,12 @@ class BagelsController < ApplicationController
 
     def create
         @bagel = Bagel.create(bagel_params)
-        render json: @bagel
+        render json: @bagel, status: :created
     end
 
     def update
-        @bagel = Bagel.find_by(bagel_params)
-        @bagel.save
+        @bagel.update(bagel_params)
         render json: @bagel
-
     end
 
     def destroy
@@ -31,6 +30,10 @@ class BagelsController < ApplicationController
     end
 
     private
+
+    def find_bagel
+        @bagel = Bagel.find(params[:id])
+    end
 
     def bagel_params
         params.require(:bagel).permit(:name, :rating)
