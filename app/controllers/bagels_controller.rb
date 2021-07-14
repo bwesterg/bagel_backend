@@ -6,6 +6,11 @@ class BagelsController < ApplicationController
         render json: @bagels
     end
 
+    def show
+        @bagel = Bagel.find_by(bagel_params)
+        render json: @bagel
+    end
+
     def create
         @bagel = Bagel.create(bagel_params)
         render json: @bagel
